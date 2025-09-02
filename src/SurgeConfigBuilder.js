@@ -121,6 +121,12 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
         
         // Get the name of the proxy to be added
         const proxyName = this.getProxyName(proxy);
+
+        // Ignore proxyName which include Trafic
+        const needIgnore = proxyName.include("Traffic");
+        if (needIgnore) {
+            return;
+        }
         
         // Check if there are proxies with similar names in existing proxies
         const similarProxies = this.config.proxies
