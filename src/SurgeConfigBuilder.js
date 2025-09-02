@@ -123,7 +123,7 @@ export class SurgeConfigBuilder extends BaseConfigBuilder {
         const proxyName = this.getProxyName(proxy);
 
         // Ignore proxyName which include Trafic
-        const needIgnore = proxyName.includes("Traffic");
+        const needIgnore = proxyName.includes("Traffic") || proxyName.includes("Expire");
         if (needIgnore) {
             return;
         }
